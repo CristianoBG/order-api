@@ -30,10 +30,3 @@ GET /order/list — Listar todos os pedidos
 PUT /order/:id — Atualizar pedido
 
 DELETE /order/:id — Deletar pedido
-
-
-💡 **Dica:** depois de colar, no terminal, você salva (`Ctrl+O`) e sai (`Ctrl+X` se estiver usando `nano`).
-
-Se você quiser, posso também criar **uma versão final do `.gitignore` completa** pronta para copiar e colar junto, que já cobre `node_modules`, `.env` e outros arquivos que geralmente não devem ir pro GitHub.  
-
-Quer que eu faça isso também?
