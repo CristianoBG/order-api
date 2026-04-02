@@ -1,21 +1,18 @@
-require("dotenv").config()
+require('dotenv').config()
 
-const express = require("express");
-const mongoose = require("mongoose");
-const orderRoutes = require("./routes/orderRoutes");
+const app       = require('./src/app')
+const connectDB = require('./src/config/database')
 
-const app = express();
+const PORT = process.env.PORT || 3000
 
-app.use(express.json());
-
-mongoose.connect(process.env.MONGO_URI);
-
-mongoose.connection.on("connected", () => {
-  console.log("MongoDB conectado");
-});
-
-app.use("/", orderRoutes);
-
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
-});
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor rodando em http://localhost:${PORT}`)
+      console.log(`📋 Health check: http://localhost:${PORT}/health`)
+    })
+  })
+  .catch((err) => {
+    console.error('❌ Falha ao conectar ao banco de dados:', err.message)
+    process.exit(1)
+  })
